@@ -4,7 +4,8 @@
   "description": "mybook frontend",
   "main": "app.js",
   "scripts": {
-    "dev-start": "./node_modules/.bin/serve & ./node_modules/.bin/node-sass -w ./stylesheets/main.scss ./stylesheets/main.css & ./node_modules/.bin/watchify app.js -o bundle.js"
+    "dev-start": "./node_modules/.bin/serve -p 3001 & ./node_modules/.bin/node-sass -w ./stylesheets/main.scss ./stylesheets/main.css & ./node_modules/.bin/watchify app.js -o bundle.js & npm run rails-server",
+    "rails-server": "rails server"
   },
   "author": "nathanhall",
   "license": "ISC",
