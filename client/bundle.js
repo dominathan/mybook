@@ -1,6 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var angular = require('angular')
-var angularRoute = require('angular-route')
+const angular = require('angular')
+require('angular-route')
 require('satellizer')
 require('./authentication/authentication.module')
 
@@ -12,6 +12,14 @@ angular
       'authentication'
     ]
   )
+  .config(function($routeProvider) {
+    $routeProvider.when('/404', {
+        template: '<h1>Sorry, page not found</h1>'
+      })
+      .otherwise({
+        redirectTo: '/404'
+      });
+  })
 
 },{"./authentication/authentication.module":3,"angular":8,"angular-route":6,"satellizer":13}],2:[function(require,module,exports){
 (function() {
