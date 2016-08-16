@@ -2,13 +2,15 @@ const angular = require('angular')
 require('angular-route')
 require('satellizer')
 require('./authentication/authentication.module')
+require('./landing/landing.module')
 
 angular
   .module('mybook',
     [
       'ngRoute',
       'satellizer',
-      'authentication'
+      'authentication',
+      'landing'
     ]
   )
   .config(function($routeProvider) {

@@ -3,13 +3,15 @@ const angular = require('angular')
 require('angular-route')
 require('satellizer')
 require('./authentication/authentication.module')
+require('./landing/landing.module')
 
 angular
   .module('mybook',
     [
       'ngRoute',
       'satellizer',
-      'authentication'
+      'authentication',
+      'landing'
     ]
   )
   .config(function($routeProvider) {
@@ -21,7 +23,7 @@ angular
       });
   })
 
-},{"./authentication/authentication.module":3,"angular":8,"angular-route":6,"satellizer":13}],2:[function(require,module,exports){
+},{"./authentication/authentication.module":3,"./landing/landing.module":6,"angular":10,"angular-route":8,"satellizer":15}],2:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -73,8 +75,8 @@ angular
 }());
 
 },{}],3:[function(require,module,exports){
-// (function() {
-//   'use strict';
+(function() {
+  'use strict';
 
   angular
     .module('authentication',[])
@@ -95,7 +97,7 @@ angular
       $authProvider.signupUrl = 'http://localhost:3000/api/v1/auth/';
     })
 
-// }());
+}());
 
 require('./authentication.controller')
 require('./authentication.service')
@@ -111,6 +113,36 @@ require('./authentication.service')
 }());
 
 },{}],5:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  angular
+    .module('landing')
+    .controller('LandingController', function($scope) {
+      
+    })
+}());
+
+},{}],6:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  angular
+    .module('landing',[])
+    .config(function($routeProvider) {
+      $routeProvider
+        .when('/', {
+          templateUrl: './landing/views/home.html',
+          controller: 'LandingController'
+        })
+
+    })
+
+}());
+
+require('./landing.controller')
+
+},{"./landing.controller":5}],7:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -1181,11 +1213,11 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 require('./angular-route');
 module.exports = 'ngRoute';
 
-},{"./angular-route":5}],7:[function(require,module,exports){
+},{"./angular-route":7}],9:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -32954,11 +32986,11 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],8:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":7}],9:[function(require,module,exports){
+},{"./angular":9}],11:[function(require,module,exports){
 'use strict'
 
 exports.toByteArray = toByteArray
@@ -33069,7 +33101,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 (function (global){
 /*!
  * The buffer module from node.js, for the browser.
@@ -34860,7 +34892,7 @@ function isnan (val) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":9,"ieee754":11,"isarray":12}],11:[function(require,module,exports){
+},{"base64-js":11,"ieee754":13,"isarray":14}],13:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -34946,14 +34978,14 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],12:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 /**
  * Satellizer 0.15.4
  * (c) 2016 Sahat Yalkabov 
@@ -35898,4 +35930,4 @@ module.exports = Array.isArray || function (arr) {
 }));
 
 
-},{"buffer":10}]},{},[1]);
+},{"buffer":12}]},{},[1]);

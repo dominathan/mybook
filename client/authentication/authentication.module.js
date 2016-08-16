@@ -1,5 +1,5 @@
-// (function() {
-//   'use strict';
+(function() {
+  'use strict';
 
   angular
     .module('authentication',[])
@@ -20,7 +20,7 @@
       $authProvider.signupUrl = 'http://localhost:3000/api/v1/auth/';
     })
 
-// }());
+}());
 
 require('./authentication.controller')
 require('./authentication.service')
