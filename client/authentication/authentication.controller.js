@@ -3,7 +3,7 @@
 
   angular
     .module('authentication')
-    .controller('AuthenticationController', function($scope, $auth) {
+    .controller('AuthenticationController', function($scope, $auth, $location) {
 
       $scope.login = function login(user) {
         if (user.email && user.password) {
@@ -13,8 +13,7 @@
           })
           .then(function(res) {
             console.log("SUCCESSFUL SIGNIN", res)
-
-            // $location.path('/');
+            // $location.path('/')
           })
           .catch(function(err) {
               // var message = "<strong> Failed to login: "+ err.data.error +"  </strong>"
