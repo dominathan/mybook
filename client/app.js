@@ -3,6 +3,7 @@ require('angular-route')
 require('satellizer')
 require('./authentication/authentication.module')
 require('./landing/landing.module')
+require('./profile/profile.module')
 
 angular
   .module('mybook',
@@ -10,7 +11,8 @@ angular
       'ngRoute',
       'satellizer',
       'authentication',
-      'landing'
+      'landing',
+      'profile'
     ]
   )
   .config(function($routeProvider) {
