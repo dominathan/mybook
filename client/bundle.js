@@ -98,8 +98,8 @@ require('angular-messages');
 
     })
     .config(function($authProvider) {
-      $authProvider.loginUrl = 'http://localhost:3000/api/v1/auth/sign_in';
-      $authProvider.signupUrl = 'http://localhost:3000/api/v1/auth/';
+      $authProvider.loginUrl = 'http://localhost:3000/auth/sign_in';
+      $authProvider.signupUrl = 'http://localhost:3000/auth/';
       $authProvider.httpInterceptor = false;
     })
     .config(function($httpProvider) {

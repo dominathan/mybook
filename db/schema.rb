@@ -10,18 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821193647) do
+ActiveRecord::Schema.define(version: 20160821200657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street_one"
+    t.string   "street_two"
+    t.string   "street_three"
+    t.string   "ciy"
+    t.string   "zip"
+    t.string   "state"
+    t.string   "country"
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["company_id"], name: "index_addresses_on_company_id", using: :btree
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "position"
+    t.string   "group"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "title"
     t.string   "suffix"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,4 +80,8 @@ ActiveRecord::Schema.define(version: 20160821193647) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  add_foreign_key "addresses", "companies"
+  add_foreign_key "addresses", "users"
+  add_foreign_key "companies", "users"
+  add_foreign_key "profiles", "users"
 end
